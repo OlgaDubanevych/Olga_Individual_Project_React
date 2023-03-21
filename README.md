@@ -15,4 +15,3 @@ If you are looking for advice and assistance, would like to give back to communi
 - Have useful links in relation to immigration and settling process all collected in one convinient place along with sucess stories of those who can proudly call Canada their new home.
 
 Likevise, if you would want to give back to the community by sharing your experience, tips and advice, donating, collaborating in discussions and asnwering questions other community members have, this app is a great tool to lend a helping hand to those who need it.
-
