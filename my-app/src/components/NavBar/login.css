@@ -1,0 +1,20 @@
+.button {
+  background-color: #BE212F;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-right: 30px;
+}
+
+h4 {
+  color: #BE212F;
+  margin-right: 30px;
+  margin-top: 5px; /* add margin-top to create space between button and text */
+}
+
+.login {
+  display: flex;
+  justify-content: flex-end;
+  align-items: end;
+  flex-direction: column; /* add flex-direction to stack the button and text vertically */
+}
