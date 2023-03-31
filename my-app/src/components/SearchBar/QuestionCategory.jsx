@@ -1,13 +1,14 @@
 import React from 'react';
+import './QuestionCategory.css'
 
 function QuestionCategory(props) {
   const { questionCategory, handleChange } = props;
 
   return (
     <>
-      <label>Please select your question category </label>
+      <label className='text'>Search for questions by Question Category </label>
       <p></p>
-      <select
+      <select className='text'
         value={questionCategory}
         placeholder="Choose your question category"
         onChange={handleChange}

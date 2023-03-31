@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+
 export default function SearchBox({ callBack }) {
   const [searchText, setSearchText] = useState('');
 
@@ -9,7 +10,7 @@ export default function SearchBox({ callBack }) {
   }
 
   return (
-    <section>
+    <section >
       <input value={searchText} onChange={handleSearch} />
     </section>
   );

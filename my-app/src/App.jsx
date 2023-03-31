@@ -8,12 +8,16 @@ import Search from "./Search";
 import QuestionForms from "./QuestionForms";
 import Footer from "./Footer";
 import LogIn from "./components/NavBar/LogIn";
+import Questions from "./components/Questions";
+import'./components/SearchBar/Questions.json'
+
 
   function App () {
     return(
      <div>
     <NavBar/>
     <LogIn/>
+   <Questions/>
     <Search/>
     <QuestionForms/>
     <Footer/>

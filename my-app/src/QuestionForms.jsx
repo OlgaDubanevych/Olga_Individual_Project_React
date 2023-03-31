@@ -1,23 +1,38 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function QuestionForms() {
   const [questionText, setQuestionText] = useState('');
   const [questionCategory, setQuestionCategory] = useState('Other');
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (event) => {
-    const { name, value, type, checked } = event.target;
+    const { value, type, checked } = event.target;
     type === 'checkbox' ? setQuestionCategory(checked) : setQuestionCategory(value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setSubmitted(true);
     console.log(`Question text: ${questionText}`);
     console.log(`Question category: ${questionCategory}`);
   };
 
+  useEffect(() => {
+    if (submitted) {
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 5000);
+    }
+  }, [submitted]);
+
   return (
-    <form onSubmit={handleSubmit}>
+    
+    <form className="text" onSubmit={handleSubmit}>
+      <p></p>
+      <h3 className="text">Post your question here: </h3>
+      <p></p>
       <textarea
+        className="text"
         type="text"
         name="questionText"
         value={questionText}
@@ -27,9 +42,10 @@ function QuestionForms() {
       <h3>{questionText}</h3>
 
       <br />
-      <label>Please select your question category </label>
+      <label className="text">Please select your question category </label>
       <p></p>
       <select
+        className="text"
         value={questionCategory}
         placeholder="Choose your question category"
         onChange={handleChange}
@@ -46,11 +62,15 @@ function QuestionForms() {
         <option value="Other">Other</option>
       </select>
       <p>
-        <button type="submit">Submit</button>
+        <button className="text" type="submit">
+          Submit
+        </button>
       </p>
+      {submitted && (
+        <p>Your question was submitted and is awaiting administrator's approval to be posted.</p>
+      )}
     </form>
   );
 }
 
 export default QuestionForms;
-
