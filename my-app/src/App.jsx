@@ -10,6 +10,7 @@ import Footer from "./Footer";
 import LogIn from "./components/NavBar/LogIn";
 import Questions from "./components/Questions";
 import'./components/SearchBar/Questions.json'
+import DiscussionImage from "./ImageDiscussionBoard"
 
 
   function App () {
@@ -17,8 +18,9 @@ import'./components/SearchBar/Questions.json'
      <div>
     <NavBar/>
     <LogIn/>
-   <Questions/>
+    <Questions/>
     <Search/>
+    <DiscussionImage/>
     <QuestionForms/>
     <Footer/>
      </div>   

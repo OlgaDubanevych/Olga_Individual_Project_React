@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import './QuestionForms.css'
 
 function QuestionForms() {
   const [questionText, setQuestionText] = useState('');
@@ -29,7 +30,7 @@ function QuestionForms() {
     
     <form className="text" onSubmit={handleSubmit}>
       <p></p>
-      <h3 className="text">Post your question here: </h3>
+      <h1 className="text-post">Ask Your Question: </h1>
       <p></p>
       <textarea
         className="text"
@@ -39,7 +40,7 @@ function QuestionForms() {
         placeholder="Type your question here"
         onChange={(e) => setQuestionText(e.target.value)}
       />
-      <h3>{questionText}</h3>
+      
 
       <br />
       <label className="text">Please select your question category </label>
@@ -62,7 +63,7 @@ function QuestionForms() {
         <option value="Other">Other</option>
       </select>
       <p>
-        <button className="text" type="submit">
+        <button className="text-submit" type="submit">
           Submit
         </button>
       </p>

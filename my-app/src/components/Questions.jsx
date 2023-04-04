@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import './SearchBar/Questions.json'
-import './Questions.css'
-import questionsData from "./SearchBar/Questions.json";
-
+import './SearchBar/Questions.json';
+import './Questions.css';
+import questionsData from './SearchBar/Questions.json';
 
 const CommentForm = ({ onCommentSubmit }) => {
   const [comment, setComment] = useState('');
@@ -14,26 +13,28 @@ const CommentForm = ({ onCommentSubmit }) => {
   };
 
   return (
-    <form className = "text" onSubmit={handleCommentSubmit}>
-      <p></p>
-      <label htmlFor="comment">Leave your comment:</label>
-      <p></p>
+    <form onSubmit={handleCommentSubmit}>
       <textarea
         id="comment"
         value={comment}
         onChange={(event) => setComment(event.target.value)}
+        className="input-box text"
+        placeholder="Leave your comment"
       />
+      <br />
       <p></p>
-      <button className = "text "type="submit">Submit</button>
+      <button type="submit" className="submit-button text">Submit</button>
     </form>
   );
 };
 
 const Comments = ({ comments }) => {
   return (
-    <div className='text'>
+    <div>
       {comments.map((comment, index) => (
-        <p key={index}>{comment}</p>
+        <p key={index} className="comment-text text">
+          <span className="bullet-point">&#8226;</span> {comment}
+        </p>
       ))}
     </div>
   );
@@ -53,13 +54,22 @@ const Question = ({ question, onLike }) => {
   };
 
   return (
-    <div className = "text">
-      <h2>{question.question_category}: {question.question_topic}</h2>
-      <p>{question.question_text}</p>
-      <button className = 'text 'onClick={handleLike}>{liked ? 'Unlike' : 'Like'}</button>
-      <h3>Comments:</h3>
+    <div className="question-container">
+      <h3 className="text">{question.question_category}</h3>
+      <h4 className="text">{question.question_topic}</h4>
+      <p className="question-text text">{question.question_text}</p>
+      <div className="like-comment-container">
+        <button onClick={handleLike} className={`like-button ${liked ? 'liked' : ''}`}>
+          <span className="like-icon">{liked ? '👍' : '👍'}</span>
+          <span className="like-text text">{liked ? 'Liked' : 'Like'}</span>
+        </button>
+        <h4 className="comment-header text">Comments:</h4>
+      </div>
       <Comments comments={comments} />
-      <CommentForm onCommentSubmit={handleCommentSubmit} />
+      <div className="comment-form-container">
+        <CommentForm onCommentSubmit={handleCommentSubmit} />
+      </div>
+      <hr />
     </div>
   );
 };
@@ -72,11 +82,19 @@ const Questions = () => {
   };
 
   return (
-    <div classsName = "text">
-      {questionsData.map((question, index) => (
-        <Question key={index} question={question} onLike={handleLike} />
-      ))}
-      <h3 className='text'>Total Liked Questions: {likedCount}</h3>
+    <div>
+      <h1 className="questions-header text">Questions</h1>
+      <hr />
+      <div className="questions-container">
+        {questionsData.map((question, index) => (
+          <div key={index}>
+            <Question question={question} onLike={handleLike} />
+            {index !== questionsData.length - 1 && <hr />}
+          </div>
+        ))}
+      </div>
+      <hr />
+      <h3 className='liked-count-text text'> Liked Questions: {likedCount}</h3>
     </div>
   );
 };
