@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './login.css';
-import Switch from '@mui/material/Switch';
 
 function LogIn() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -13,13 +12,14 @@ function LogIn() {
 
   return (
     <div className="login">
-      <div className="switch-container">
-        <Switch checked ={isLoggedIn} onChange={handleSwitch}/>
-        <span className="switch-label">{loginStatus.replace(/(\b\w)/gi, c => c.toUpperCase())}</span>
-      </div>
+      <button className={isLoggedIn ? 'switch on' : 'switch off'} onClick={handleSwitch}>
+        <span className="slider"></span>
+      </button>
+      <span className="switch-label">{loginStatus.replace(/(\b\w)/gi, c => c.toUpperCase())}</span>
     </div>
   );
 }
 
 export default LogIn;
+
 

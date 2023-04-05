@@ -1,7 +1,7 @@
 import React from "react";
 import SideMenu from "./sidemenu/SideMenu";
+import LogIn from "./LogIn";
 import "./ToolBar.css";
-
 
 function ToolBar(props) {
   return (
@@ -31,6 +31,8 @@ function ToolBar(props) {
             </li>
           </ul>
         </div>
+
+        <LogIn />
       </nav>
     </header>
   );

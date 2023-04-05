@@ -13,18 +13,18 @@ import'./components/SearchBar/Questions.json'
 import DiscussionImage from "./ImageDiscussionBoard"
 
 
-  function App () {
-    return(
-     <div>
-    <NavBar/>
-    <LogIn/>
-    <Questions/>
-    <Search/>
-    <DiscussionImage/>
-    <QuestionForms/>
-    <Footer/>
-     </div>   
-    )
+function App () {
+  return(
+    <div>
+      <NavBar />
+      
+      <Questions />
+      <Search />
+      <DiscussionImage />
+      <QuestionForms />
+      <Footer />
+    </div>   
+  );
 }
 
 export default App;

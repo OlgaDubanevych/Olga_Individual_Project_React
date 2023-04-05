@@ -1,6 +1,6 @@
 import React from "react";
 import "./SideDrawer.css";
-import LogIn from "../LogIn";
+
 
 const SideDrawer = (props) => {
   let drawerClasses = ["side-drawer"];

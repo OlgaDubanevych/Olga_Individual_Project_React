@@ -3,7 +3,7 @@ import Toolbar from "./components/NavBar/Toobar";
 import "./styles.css";
 import SideDrawer from "./components/NavBar/sidemenu/SideDrawer";
 import BackDrop from "./components/NavBar/backdrop/BackDrop";
-import LogIn from "./components/NavBar/LogIn";
+
 
 function NavBar() {
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
