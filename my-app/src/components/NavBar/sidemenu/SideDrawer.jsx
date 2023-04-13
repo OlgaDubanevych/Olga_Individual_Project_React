@@ -1,7 +1,8 @@
 import React from "react";
 import "./SideDrawer.css";
 
-const sideDrawer = props => {
+
+const SideDrawer = (props) => {
   let drawerClasses = ["side-drawer"];
 
   if (props.show) {
@@ -25,11 +26,13 @@ const sideDrawer = props => {
         <li>
           <a href="/">Immigration</a>
         </li>
-        <li>
-          <a href="/">Log In</a>
-        </li>
       </ul>
     </nav>
   );
 };
-export default sideDrawer;
+
+export default SideDrawer;
+
+
+
+

@@ -1,4 +1,5 @@
 .toggle-button {
+   margin-left: 35 px;
     height: 24px;
     width: 100%;
     background: transparent;
@@ -14,10 +15,12 @@
   }
   
   .toggle-button:focus {
+    margin-left: 35 px;
     outline: none;
   }
   
   .toggle-button-line {
+    margin-left: 35 px;
     width: 30px;
     height: 2px;
     background: white;

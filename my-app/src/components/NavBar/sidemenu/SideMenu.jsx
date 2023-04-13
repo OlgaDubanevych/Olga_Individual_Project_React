@@ -1,8 +1,8 @@
 import React from "react";
 import "./SideMenu.css";
 
-const menuToggleButton = props => (
-  <button className="toggle-button" onClick={props.click}>
+const menuToggleButton= ({ click }) => (
+  <button className="toggle-button" onClick={click}>
     <div className="toggle-button-line" />
     <div className="toggle-button-line" />
     <div className="toggle-button-line" />
