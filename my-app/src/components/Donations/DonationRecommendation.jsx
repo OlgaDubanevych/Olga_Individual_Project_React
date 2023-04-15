@@ -25,7 +25,7 @@ const RecommendationForm = () => {
         <form onSubmit={handleSubmit}>
           <div className="form-field">
             <p></p>
-            <label htmlFor="firstName" className="text">First Name:</label>
+            <label htmlFor="firstName" className="text">First Name: &nbsp; </label>
             <input
               type="text"
               id="firstName"
@@ -36,7 +36,7 @@ const RecommendationForm = () => {
           </div>
           <p></p>
           <div className="form-field">
-            <label htmlFor="lastName" className="text">Last Name:</label>
+            <label htmlFor="lastName" className="text">Last Name: &nbsp; </label>
             <input
               type="text"
               id="lastName"
@@ -47,7 +47,7 @@ const RecommendationForm = () => {
           </div>
           <p></p>
           <div className="form-field">
-            <label htmlFor="email" className="text">Email:</label>
+            <label htmlFor="email" className="text">Email: &nbsp; </label>
             <input
               type="email"
               id="email"
