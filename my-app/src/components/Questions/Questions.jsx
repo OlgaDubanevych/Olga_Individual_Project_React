@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './SearchBar/Questions.json';
+import './QuestionSearch/Questions.json';
 import './Questions.css';
-import questionsData from './SearchBar/Questions.json';
+import questionsData from './QuestionSearch/Questions.json';
 
 const CommentForm = ({ onCommentSubmit }) => {
   const [comment, setComment] = useState('');
@@ -32,7 +32,7 @@ const Comments = ({ comments }) => {
   return (
     <div>
       {comments.map((comment, index) => (
-        <p key={index} className="comment-text text">
+        <p key={index} className="comment-text">
           <span className="bullet-point">&#8226;</span> {comment}
         </p>
       ))}
@@ -57,7 +57,7 @@ const Question = ({ question, onLike }) => {
     <div className="question-container">
       <h3 className="text">{question.question_category}</h3>
       <h4 className="text">{question.question_topic}</h4>
-      <p className="question-text text">{question.question_text}</p>
+      <p className="question-text ">{question.question_text}</p>
       <div className="like-comment-container">
         <button onClick={handleLike} className={`like-button ${liked ? 'liked' : ''}`}>
           <span className="like-icon">{liked ? '👍' : '👍'}</span>
@@ -83,7 +83,7 @@ const Questions = () => {
 
   return (
     <div>
-      <h1 className="questions-header text">Questions</h1>
+      <h1 className="questions-header">Questions</h1>
       <hr />
       <div className="questions-container">
         {questionsData.map((question, index) => (
@@ -94,7 +94,7 @@ const Questions = () => {
         ))}
       </div>
       <hr />
-      <h3 className='liked-count-text text'> Liked Questions: {likedCount}</h3>
+      <h3 className='liked-count-text'> Liked Questions: {likedCount}</h3>
     </div>
   );
 };
