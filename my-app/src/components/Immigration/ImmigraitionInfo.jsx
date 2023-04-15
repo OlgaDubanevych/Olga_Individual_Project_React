@@ -7,7 +7,7 @@ function ImmigrationToCanada(props) {
       <h1 className = "header">Immigration to Canada</h1>
       <p className = "text">Immigration is a complex process which requires  diligent planning, conducting extensive research  and envisioning  steps to success. Not surprisingly, 
         it poses questions, which need to be answered before you would be able to make well-informed decisions.</p>
-      <p className = "text">We have collected links to government, not-for-profit and other organizations providing official and relevant information on immigration and settling processb(job search, finding a place to rent, enrolling children into school, English language classes and other types of assistance).</p>
+      <p className = "text">We have collected links to government, not-for-profit and other organizations providing official and relevant information on immigration and settling process (job search, finding a place to rent, enrolling children into school, English language classes and other types of assistance).</p>
       <ul className = "other_text">
         <p>What do you need to know before starting your immigration process? </p>
         <p></p>
