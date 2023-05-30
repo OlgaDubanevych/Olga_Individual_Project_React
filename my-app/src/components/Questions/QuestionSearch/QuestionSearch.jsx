@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import './styles.css'
-import SearchBox from './components/SearchBar/SearchBox'
-import Results from './components/SearchBar/Results'
-import ResultItem from "./components/SearchBar/ResultItem";
-import Questions from './components/SearchBar/Questions.json'
-import QuestionCategory from './components/SearchBar/QuestionCategory'
-import './Search.css'
+import SearchBox from './QuestionSearchBox'
+import Results from './QuestionResults'
+import ResultItem from "./QuestionResultItem";
+import Questions from './Questions.json'
+import QuestionCategory from './QuestionCategory'
+import './QuestionSearch.css'
 
 export default function Search () {
   const [searchInput, setSearchInput] = useState('');

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import Toolbar from "./components/NavBar/Toobar";
-import "./styles.css";
-import SideDrawer from "./components/NavBar/sidemenu/SideDrawer";
-import BackDrop from "./components/NavBar/backdrop/BackDrop";
+import ToolBar from './ToolBar'
+import SideDrawer from "./Sidemenu/SideDrawer";
+import BackDrop from "./Backdrop/BackDrop";
+import "./NavBar.css";
+import LogIn from './LogIn'
+
 
 
 function NavBar() {
@@ -24,7 +26,7 @@ function NavBar() {
 
   return (
     <div style={{ height: "100%" }}>
-      <Toolbar drawerToggleClickHandler={drawerToggleClickHandler} />
+      <ToolBar drawerToggleClickHandler={drawerToggleClickHandler} />
       <SideDrawer show={sideDrawerOpen} />
       {backdrop}
       <main style={{ marginTop: "64px" }}></main>

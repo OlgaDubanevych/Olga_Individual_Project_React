@@ -1,5 +1,5 @@
 import React from 'react';
-import ResultItem from './ResultItem';
+import ResultItem from './QuestionResultItem';
 
 export default function Results({ Results, searchInput, selectedCategory }) {
   const hasComments = (comments) => comments.length > 0;
