@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import NavBar from "./components/NavBar/NavBar"
-import Footer from "./components/Footer/Footer"
-import SideMenu from "./components/NavBar/Sidemenu/SideMenu";
-import BackDrop from "./components/NavBar/Backdrop/BackDrop";
-import AboutUs from "./components/Pages/AboutUs";
-import DiscussionPage from "./components/Pages/DiscussionPage";
-import DonationsPage from "./components/Pages/DonationsPage";
-import JobSearchPage from "./components/Pages/JobSearchPage"
-import ImmigrationPage from "./components/Pages/ImmigrationPage";
+import NavBar from "./components/NavBar/NavBar.jsx"
+import Footer from "./components/Footer/Footer.jsx"
+import SideMenu from "./components/NavBar/Sidemenu/SideMenu.jsx";
+import BackDrop from "./components/NavBar/Backdrop/BackDrop.jsx";
+import AboutUs from "./components/Pages/AboutUs.jsx";
+import DiscussionPage from "./components/Pages/DiscussionPage.jsx";
+import DonationsPage from "./components/Pages/DonationsPage.jsx";
+import JobSearchPage from "./components/Pages/JobSearchPage.jsx"
+import ImmigrationPage from "./components/Pages/ImmigrationPage.jsx";
 import "./styles.css";
 
 
