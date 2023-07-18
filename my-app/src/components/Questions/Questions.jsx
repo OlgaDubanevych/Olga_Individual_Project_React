@@ -1,30 +1,35 @@
-import React, { useState } from 'react';
-import './QuestionSearch/Questions.json';
-import './Questions.css';
-import questionsData from './QuestionSearch/Questions.json';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const CommentForm = ({ onCommentSubmit }) => {
-  const [comment, setComment] = useState('');
+const Question = ({ question, onLike }) => {
+  const [liked, setLiked] = useState(false);
+  const [comments, setComments] = useState(question.comments || []); // Ensure comments is initialized as an array
 
-  const handleCommentSubmit = (event) => {
-    event.preventDefault();
-    onCommentSubmit(comment);
-    setComment('');
+  const handleLike = () => {
+    setLiked(!liked);
+    onLike(!liked);
+  };
+
+  const handleCommentSubmit = (comment) => {
+    setComments([...comments, comment]);
   };
 
   return (
-    <form onSubmit={handleCommentSubmit}>
-      <textarea
-        id="comment"
-        value={comment}
-        onChange={(event) => setComment(event.target.value)}
-        className="input-box text"
-        placeholder="Leave your comment"
-      />
-      <br />
-      <p></p>
-      <button type="submit" className="submit-button text">Submit</button>
-    </form>
+    <div className="question-container">
+      <h3 className="text">{question.question_category}</h3>
+      <h4 className="text">{question.question_topic}</h4>
+      <p className="question-text">{question.question_text}</p>
+      <div className="like-comment-container">
+        <button onClick={handleLike} className={`like-button ${liked ? 'liked' : ''}`}>
+          <span className="like-icon">{liked ? '👍' : '👍'}</span>
+          <span className="like-text text">{liked ? 'Liked' : 'Like'}</span>
+        </button>
+        <h4 className="comment-header text">Comments:</h4>
+      </div>
+      {/* Render comments */}
+      <Comments comments={comments} />
+      <hr />
+    </div>
   );
 };
 
@@ -40,45 +45,38 @@ const Comments = ({ comments }) => {
   );
 };
 
-const Question = ({ question, onLike }) => {
-  const [liked, setLiked] = useState(false);
-  const [comments, setComments] = useState(question.comments);
-
-  const handleLike = () => {
-    setLiked(!liked);
-    onLike(!liked);
-  };
-
-  const handleCommentSubmit = (comment) => {
-    setComments([...comments, comment]);
-  };
-
-  return (
-    <div className="question-container">
-      <h3 className="text">{question.question_category}</h3>
-      <h4 className="text">{question.question_topic}</h4>
-      <p className="question-text ">{question.question_text}</p>
-      <div className="like-comment-container">
-        <button onClick={handleLike} className={`like-button ${liked ? 'liked' : ''}`}>
-          <span className="like-icon">{liked ? '👍' : '👍'}</span>
-          <span className="like-text text">{liked ? 'Liked' : 'Like'}</span>
-        </button>
-        <h4 className="comment-header text">Comments:</h4>
-      </div>
-      <Comments comments={comments} />
-      <div className="comment-form-container">
-        <CommentForm onCommentSubmit={handleCommentSubmit} />
-      </div>
-      <hr />
-    </div>
-  );
-};
-
 const Questions = () => {
-  const [likedCount, setLikedCount] = useState(0);
+  const [questions, setQuestions] = useState([]);
 
-  const handleLike = (isLiked) => {
-    setLikedCount(likedCount + (isLiked ? 1 : -1));
+  useEffect(() => {
+    fetchQuestions();
+  }, []);
+
+  const fetchQuestions = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/questions', {
+        headers: { 'x-response-type': 'template' },
+      });
+      const parser = new DOMParser();
+      const htmlDocument = parser.parseFromString(response.data, 'text/html');
+      const rows = Array.from(htmlDocument.querySelectorAll('tr')).slice(1);
+      const fetchedQuestions = rows.map((row) => {
+        const [postedBy, category, topic, text, date] = Array.from(row.querySelectorAll('td')).map((cell) =>
+          cell.textContent.trim()
+        );
+        return {
+          posted_by: postedBy,
+          question_category: category,
+          question_topic: topic,
+          question_text: text,
+          question_posting_date: date,
+          comments: [] // Add a sample comments array here
+        };
+      });
+      setQuestions(fetchedQuestions);
+    } catch (error) {
+      console.error('Error fetching questions:', error);
+    }
   };
 
   return (
@@ -86,15 +84,17 @@ const Questions = () => {
       <h1 className="questions-header">Questions</h1>
       <hr />
       <div className="questions-container">
-        {questionsData.map((question, index) => (
-          <div key={index}>
-            <Question question={question} onLike={handleLike} />
-            {index !== questionsData.length - 1 && <hr />}
-          </div>
-        ))}
+        {questions.length > 0 ? (
+          questions.map((question, index) => (
+            <div key={index}>
+              <Question question={question} />
+              {index !== questions.length - 1 && <hr />}
+            </div>
+          ))
+        ) : (
+          <p>Loading questions...</p>
+        )}
       </div>
-      <hr />
-      <h3 className='liked-count-text'> Liked Questions: {likedCount}</h3>
     </div>
   );
 };
